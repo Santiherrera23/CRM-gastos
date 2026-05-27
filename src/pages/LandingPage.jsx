@@ -1,35 +1,35 @@
 import { Link } from 'react-router-dom'
 import {
-  Sparkles, ArrowRight, Send, Shield, BarChart3, Globe,
-  Star, CheckCircle, TrendingUp,
+  Sparkles, ArrowRight, LogIn, Send, Shield, BarChart3, Globe,
+  CheckCircle, TrendingUp,
 } from 'lucide-react'
 
 const FEATURES = [
   {
     icon: Send,
-    title: 'Submit in Seconds',
-    desc: 'Fill the form, pick a category, attach a receipt. Done in under a minute — no paperwork, no email chains.',
+    title: 'Envío en Segundos',
+    desc: 'Llena el formulario, selecciona la categoría y listo. Sin papeleo ni cadenas de correo.',
     bg: '#EFF6FF',
     iconColor: '#1A56DB',
   },
   {
     icon: Shield,
-    title: 'Role-Based Approval',
-    desc: 'Approvers and admins review, approve, or reject from one streamlined, audit-ready dashboard.',
+    title: 'Aprobación por Roles',
+    desc: 'Los aprobadores y administradores revisan y aprueban desde un solo panel.',
     bg: '#FEF3C7',
     iconColor: '#D97706',
   },
   {
     icon: BarChart3,
-    title: 'Real-Time Analytics',
-    desc: 'Live charts of spend by category, department, and month — always up to date and exportable.',
+    title: 'Analítica en Tiempo Real',
+    desc: 'Gráficos de gasto por categoría, departamento y mes — siempre actualizados.',
     bg: '#D1FAE5',
     iconColor: '#059669',
   },
   {
     icon: Globe,
-    title: 'Multi-Currency',
-    desc: 'Submit in USD, COP, EUR, or GBP. Every transaction is captured and fully auditable in one ledger.',
+    title: 'Soporte Multi-Moneda',
+    desc: 'Registra en USD, COP, EUR o GBP. Cada transacción queda registrada.',
     bg: '#EDE9FE',
     iconColor: '#7C3AED',
   },
@@ -38,35 +38,33 @@ const FEATURES = [
 const STEPS = [
   {
     icon: Send,
-    title: 'Submit',
-    desc: 'Fill out the form, attach a receipt link, and submit. Takes under a minute.',
+    title: 'Registrar',
+    desc: 'Llena el formulario de gastos y adjunta el recibo. Toma menos de un minuto.',
     bg: '#EFF6FF',
     iconColor: '#1A56DB',
   },
   {
     icon: CheckCircle,
-    title: 'Review',
-    desc: 'Approvers see new submissions instantly and can act with a single click.',
+    title: 'Revisar',
+    desc: 'Los aprobadores ven los envíos al instante y pueden aprobar o rechazar con un clic.',
     bg: '#FEF3C7',
     iconColor: '#D97706',
   },
   {
     icon: TrendingUp,
-    title: 'Analyze',
-    desc: 'Admins track spend across departments, categories, and months in real time.',
+    title: 'Analizar',
+    desc: 'Los administradores hacen seguimiento del gasto por departamento y categoría.',
     bg: '#D1FAE5',
     iconColor: '#059669',
   },
 ]
 
 const STATS = [
-  { value: '99.9%', label: 'Uptime' },
-  { value: '<2s',   label: 'Submit Time' },
-  { value: '4',     label: 'Currencies' },
-  { value: '10+',   label: 'Categories' },
+  { value: '99.9%', label: 'Disponibilidad' },
+  { value: '<2s',   label: 'Tiempo de envío' },
+  { value: '4',     label: 'Monedas' },
+  { value: '10+',   label: 'Categorías' },
 ]
-
-const AVATAR_COLORS = ['#1A56DB', '#F59E0B', '#10B981', '#8B5CF6']
 
 const SECTION_CONTAINER = { maxWidth: '1140px', margin: '0 auto', padding: '0 40px' }
 
@@ -101,21 +99,14 @@ export default function LandingPage() {
             </span>
           </Link>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-            <Link to="/signin" style={{
-              fontSize: '14px', color: '#64748B', textDecoration: 'none', fontWeight: 500,
-            }}>
-              Iniciar sesión
-            </Link>
-            <Link to="/signin" style={{
-              display: 'inline-flex', alignItems: 'center', gap: '6px',
-              background: '#0B1D3A', color: '#FFFFFF',
-              padding: '10px 20px', borderRadius: '10px',
-              fontSize: '14px', fontWeight: 600, textDecoration: 'none',
-            }}>
-              Get Started <ArrowRight size={14} />
-            </Link>
-          </div>
+          <Link to="/signin" style={{
+            display: 'inline-flex', alignItems: 'center', gap: '6px',
+            background: '#0B1D3A', color: '#FFFFFF',
+            padding: '10px 20px', borderRadius: '10px',
+            fontSize: '14px', fontWeight: 600, textDecoration: 'none',
+          }}>
+            Iniciar Sesión <ArrowRight size={14} />
+          </Link>
         </div>
       </nav>
 
@@ -133,7 +124,7 @@ export default function LandingPage() {
             marginBottom: '32px',
           }}>
             <Sparkles size={14} style={{ color: '#F59E0B' }} />
-            Built for the modern finance team
+            Portal de Gastos Corporativos
           </div>
 
           <h1 style={{
@@ -143,17 +134,17 @@ export default function LandingPage() {
             marginBottom: '24px',
             fontFamily: "'Playfair Display', serif",
           }}>
-            Manage your expenses
+            Registra tus gastos
             <br />
-            <span style={{ color: '#1A56DB' }}>smarter &amp; faster</span>
+            <span style={{ color: '#1A56DB' }}>de viaje y empresa</span>
           </h1>
 
           <p style={{
             fontSize: '1.1rem', lineHeight: 1.75, color: '#64748B',
             maxWidth: '540px', margin: '0 auto 40px',
           }}>
-            One portal for employees to submit travel and business expenses,
-            and for approvers to review, approve, and analyze — in real time.
+            Ingresa, consulta y haz seguimiento a tus gastos de viaje y eventos
+            corporativos. Tu equipo de finanzas se encarga del resto.
           </p>
 
           <Link to="/signin" style={{
@@ -163,40 +154,8 @@ export default function LandingPage() {
             fontSize: '16px', fontWeight: 600, textDecoration: 'none',
             boxShadow: '0 10px 30px rgba(11,29,58,0.18)',
           }}>
-            Get Started <ArrowRight size={18} />
+            <LogIn size={18} /> Iniciar Sesión
           </Link>
-
-          <p style={{
-            marginTop: '16px', fontSize: '13px', color: '#94A3B8',
-          }}>
-            No credit card required • Free for all employees
-          </p>
-
-          {/* Social proof row */}
-          <div style={{
-            marginTop: '48px',
-            display: 'flex', justifyContent: 'center', alignItems: 'center',
-            gap: '20px', flexWrap: 'wrap',
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              {AVATAR_COLORS.map((c, i) => (
-                <div key={i} style={{
-                  width: '32px', height: '32px', borderRadius: '50%',
-                  background: c, border: '2px solid #FFFFFF',
-                  marginLeft: i === 0 ? 0 : '-8px',
-                  boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
-                }} />
-              ))}
-            </div>
-            <div style={{ display: 'flex', gap: '2px' }}>
-              {[0,1,2,3,4].map(i => (
-                <Star key={i} size={14} style={{ color: '#F59E0B', fill: '#F59E0B' }} />
-              ))}
-            </div>
-            <span style={{ fontSize: '13px', color: '#64748B', fontWeight: 500 }}>
-              Used by 50+ employees at Arus
-            </span>
-          </div>
         </div>
       </section>
 
@@ -237,20 +196,20 @@ export default function LandingPage() {
               fontSize: '12px', fontWeight: 700, letterSpacing: '0.15em',
               marginBottom: '12px',
             }}>
-              Features
+              Funcionalidades
             </p>
             <h2 style={{
               color: '#0B1D3A', fontSize: '2.2rem', fontWeight: 800,
               letterSpacing: '-0.02em', marginBottom: '16px',
               fontFamily: "'Playfair Display', serif",
             }}>
-              Everything finance teams need
+              Todo lo que necesitas para gestionar gastos
             </h2>
             <p style={{
               color: '#64748B', fontSize: '1rem', lineHeight: 1.6,
               maxWidth: '460px', margin: '0 auto',
             }}>
-              Built end-to-end on Supabase — secure, fast, and audit-ready from day one.
+              Una plataforma segura, rápida y lista para auditoría.
             </p>
           </div>
 
@@ -294,20 +253,20 @@ export default function LandingPage() {
               fontSize: '12px', fontWeight: 700, letterSpacing: '0.15em',
               marginBottom: '12px',
             }}>
-              How it works
+              Cómo funciona
             </p>
             <h2 style={{
               color: '#0B1D3A', fontSize: '2.2rem', fontWeight: 800,
               letterSpacing: '-0.02em', marginBottom: '16px',
               fontFamily: "'Playfair Display', serif",
             }}>
-              Three steps, start to finish
+              Tres pasos, de inicio a fin
             </h2>
             <p style={{
               color: '#64748B', fontSize: '1rem', lineHeight: 1.6,
               maxWidth: '460px', margin: '0 auto',
             }}>
-              From submission to approval to insight — the entire workflow in one place.
+              Desde el registro hasta la aprobación — todo en un solo lugar.
             </p>
           </div>
 
@@ -333,7 +292,7 @@ export default function LandingPage() {
                   textTransform: 'uppercase', letterSpacing: '0.12em',
                   fontWeight: 700, marginBottom: '10px',
                 }}>
-                  Step {i + 1}
+                  Paso {i + 1}
                 </p>
                 <h3 style={{
                   fontSize: '1.1rem', fontWeight: 700,
@@ -362,21 +321,21 @@ export default function LandingPage() {
             fontSize: '12px', fontWeight: 700, letterSpacing: '0.15em',
             marginBottom: '16px',
           }}>
-            For Arus Employees
+            Para Empleados de Arus
           </p>
           <h2 style={{
             color: '#FFFFFF', fontSize: '2rem', fontWeight: 800,
             letterSpacing: '-0.02em', marginBottom: '16px',
             fontFamily: "'Playfair Display', serif",
           }}>
-            Ready to submit your next expense?
+            ¿Listo para registrar tu próximo gasto?
           </h2>
           <p style={{
             color: 'rgba(147,187,252,0.6)', fontSize: '1rem', lineHeight: 1.6,
             marginBottom: '32px',
             maxWidth: '460px', marginLeft: 'auto', marginRight: 'auto',
           }}>
-            Sign in with your work credentials and get started in under a minute.
+            Inicia sesión con tus credenciales corporativas.
           </p>
           <Link to="/signin" style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
@@ -384,7 +343,7 @@ export default function LandingPage() {
             padding: '14px 32px', borderRadius: '12px',
             fontSize: '15px', fontWeight: 700, textDecoration: 'none',
           }}>
-            Get Started <ArrowRight size={16} />
+            <LogIn size={16} /> Iniciar Sesión
           </Link>
         </div>
       </div>
@@ -394,7 +353,7 @@ export default function LandingPage() {
         borderTop: '1px solid #F1F5F9', padding: '32px',
         textAlign: 'center', color: '#94A3B8', fontSize: '0.85rem',
       }}>
-        © {new Date().getFullYear()} Arus — Expense Management CRM · Built on Supabase
+        © {new Date().getFullYear()} Arus — Portal de Gestión de Gastos · Desarrollado con Supabase
       </footer>
     </div>
   )
