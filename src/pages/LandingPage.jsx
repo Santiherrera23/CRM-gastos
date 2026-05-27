@@ -1,168 +1,284 @@
 import { Link } from 'react-router-dom'
-import { useAuth } from '../lib/useAuth'
 import {
-  ArrowRight, Send, ShieldCheck, BarChart3,
-  Receipt, Globe2, CheckCircle2, Building2
+  Sparkles, ArrowRight, Send, Shield, BarChart3, Globe,
+  Star, CheckCircle, TrendingUp,
 } from 'lucide-react'
 
 const FEATURES = [
   {
     icon: Send,
-    iconBg: 'bg-[#1A56DB]',
-    title: 'Submit in seconds',
-    desc: 'Snap a receipt, set a category, and you’re done. No paperwork, no email chains, no spreadsheets.',
+    title: 'Submit in Seconds',
+    desc: 'Fill the form, pick a category, attach a receipt. Done in under a minute — no paperwork, no email chains.',
+    bg: '#EFF6FF',
+    iconColor: '#1A56DB',
   },
   {
-    icon: ShieldCheck,
-    iconBg: 'bg-[#F59E0B]',
-    title: 'Role-based approval',
+    icon: Shield,
+    title: 'Role-Based Approval',
     desc: 'Approvers and admins review, approve, or reject from one streamlined, audit-ready dashboard.',
+    bg: '#FEF3C7',
+    iconColor: '#D97706',
   },
   {
     icon: BarChart3,
-    iconBg: 'bg-[#10B981]',
-    title: 'Real-time analytics',
-    desc: 'Live charts of spend by category, department, and month — powered by Recharts.',
+    title: 'Real-Time Analytics',
+    desc: 'Live charts of spend by category, department, and month — always up to date and exportable.',
+    bg: '#D1FAE5',
+    iconColor: '#059669',
   },
   {
-    icon: Globe2,
-    iconBg: 'bg-[#3B82F6]',
-    title: 'Multi-currency',
-    desc: 'Submit in USD, COP, EUR, or GBP. Every transaction is captured and fully auditable.',
+    icon: Globe,
+    title: 'Multi-Currency',
+    desc: 'Submit in USD, COP, EUR, or GBP. Every transaction is captured and fully auditable in one ledger.',
+    bg: '#EDE9FE',
+    iconColor: '#7C3AED',
+  },
+]
+
+const STEPS = [
+  {
+    icon: Send,
+    title: 'Submit',
+    desc: 'Fill out the form, attach a receipt link, and submit. Takes under a minute.',
+    bg: '#EFF6FF',
+    iconColor: '#1A56DB',
+  },
+  {
+    icon: CheckCircle,
+    title: 'Review',
+    desc: 'Approvers see new submissions instantly and can act with a single click.',
+    bg: '#FEF3C7',
+    iconColor: '#D97706',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Analyze',
+    desc: 'Admins track spend across departments, categories, and months in real time.',
+    bg: '#D1FAE5',
+    iconColor: '#059669',
   },
 ]
 
 const STATS = [
   { value: '99.9%', label: 'Uptime' },
-  { value: '<2s',   label: 'Submit time' },
+  { value: '<2s',   label: 'Submit Time' },
   { value: '4',     label: 'Currencies' },
   { value: '10+',   label: 'Categories' },
 ]
 
-const STEPS = [
-  { title: 'Submit',  desc: 'Fill out the form, attach a receipt link, and submit. Takes under a minute.' },
-  { title: 'Approve', desc: 'Approvers see new submissions instantly and act with a single click.' },
-  { title: 'Analyze', desc: 'Admins track spend across departments, categories, and months in real time.' },
-]
+const AVATAR_COLORS = ['#1A56DB', '#F59E0B', '#10B981', '#8B5CF6']
+
+const SECTION_CONTAINER = { maxWidth: '1140px', margin: '0 auto', padding: '0 40px' }
 
 export default function LandingPage() {
-  const { user } = useAuth()
-  const ctaTarget = user ? '/dashboard' : '/signin'
-
   return (
-    <div className="min-h-screen bg-white pt-16">
-      {/* ============== NAVBAR (fixed) ============== */}
-      <nav className="fixed top-0 inset-x-0 z-50 bg-[#0B1D3A] text-white shadow-md">
-        <div className="max-w-7xl mx-auto px-8 flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-white/10 ring-1 ring-white/20 rounded-lg flex items-center justify-center">
-              <svg viewBox="0 0 32 32" width="18" height="18">
-                <path d="M9 22 L16 8 L23 22 M11.5 17.5 H20.5"
-                      stroke="#F59E0B" strokeWidth="2.6"
-                      strokeLinecap="round" strokeLinejoin="round" fill="none" />
-              </svg>
+    <div style={{ minHeight: '100vh', overflow: 'visible', background: '#FFFFFF' }}>
+
+      {/* ============== NAVBAR ============== */}
+      <nav style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+        background: 'rgba(255,255,255,0.95)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        borderBottom: '1px solid #F1F5F9',
+      }}>
+        <div style={{
+          maxWidth: '1140px', margin: '0 auto', padding: '0 40px',
+          height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
+            <div style={{
+              width: '36px', height: '36px', borderRadius: '8px',
+              background: '#0B1D3A',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: '#F59E0B', fontWeight: 800, fontSize: '18px',
+              fontFamily: "'Playfair Display', serif",
+            }}>
+              A
             </div>
-            <span className="text-lg font-extrabold tracking-tight font-[Playfair_Display]">Arus</span>
-            <span className="hidden sm:inline-block text-[10px] font-semibold uppercase tracking-[0.18em] text-[#F59E0B] bg-white/5 ring-1 ring-white/10 rounded-full px-2.5 py-1">
-              Expense CRM
+            <span style={{ fontWeight: 700, fontSize: '18px', color: '#0B1D3A', letterSpacing: '-0.01em' }}>
+              Arus
             </span>
           </Link>
 
-          <Link
-            to={ctaTarget}
-            className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all"
-          >
-            {user ? 'Dashboard' : 'Sign In'} <ArrowRight size={16} />
-          </Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+            <Link to="/signin" style={{
+              fontSize: '14px', color: '#64748B', textDecoration: 'none', fontWeight: 500,
+            }}>
+              Iniciar sesión
+            </Link>
+            <Link to="/signin" style={{
+              display: 'inline-flex', alignItems: 'center', gap: '6px',
+              background: '#0B1D3A', color: '#FFFFFF',
+              padding: '10px 20px', borderRadius: '10px',
+              fontSize: '14px', fontWeight: 600, textDecoration: 'none',
+            }}>
+              Get Started <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
       </nav>
 
       {/* ============== HERO ============== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0B1D3A] via-[#142952] to-[#1A56DB] text-white">
-        <div className="absolute inset-0 opacity-15 pointer-events-none">
-          <div className="absolute -top-20 -left-20 w-96 h-96 bg-[#3B82F6] rounded-full blur-3xl" />
-          <div className="absolute -bottom-32 -right-20 w-[28rem] h-[28rem] bg-[#F59E0B] rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-8 py-20 text-center">
-          <h1
-            className="text-5xl font-extrabold leading-tight text-white mb-4 font-[Playfair_Display] animate-fade-up"
-            style={{ animationDelay: '50ms', opacity: 0 }}
-          >
-            Expense management,
-            <br />
-            <span className="text-[#F59E0B]">re-imagined</span> for Arus.
-          </h1>
-
-          <p
-            className="text-lg text-blue-200 leading-relaxed max-w-2xl mx-auto mb-8 animate-fade-up"
-            style={{ animationDelay: '150ms', opacity: 0 }}
-          >
-            One portal for employees to submit travel and business expenses, and for
-            approvers to review, approve, and analyze — in real time.
-          </p>
-
-          <div
-            className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-up"
-            style={{ animationDelay: '250ms', opacity: 0 }}
-          >
-            <Link
-              to={ctaTarget}
-              className="inline-flex items-center justify-center gap-2 bg-[#F59E0B] hover:bg-[#D97706] text-[#0B1D3A] font-bold rounded-xl px-6 py-3 shadow-lg shadow-amber-500/30 transition-all"
-            >
-              <Send size={18} /> Submit an Expense
-            </Link>
-            <Link
-              to="/signin"
-              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur ring-1 ring-white/20 text-white font-semibold rounded-xl px-6 py-3 transition-all"
-            >
-              <ShieldCheck size={18} /> Sign In
-            </Link>
+      <section style={{
+        paddingTop: '160px', paddingBottom: '100px',
+        background: '#FFFFFF', textAlign: 'center',
+      }}>
+        <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 40px' }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '8px',
+            background: '#F8FAFC', border: '1px solid #E2E8F0',
+            borderRadius: '100px', padding: '6px 16px',
+            fontSize: '13px', color: '#1A56DB', fontWeight: 500,
+            marginBottom: '32px',
+          }}>
+            <Sparkles size={14} style={{ color: '#F59E0B' }} />
+            Built for the modern finance team
           </div>
 
-          {/* Stats inside hero */}
-          <div
-            className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto animate-fade-up"
-            style={{ animationDelay: '350ms', opacity: 0 }}
-          >
-            {STATS.map((s) => (
-              <div
-                key={s.label}
-                className="bg-white/10 backdrop-blur ring-1 ring-white/15 rounded-xl p-4 text-center"
-              >
-                <div className="text-2xl md:text-3xl font-extrabold text-[#F59E0B] leading-tight">{s.value}</div>
-                <div className="text-xs uppercase tracking-wider text-blue-200 mt-1.5">{s.label}</div>
-              </div>
-            ))}
+          <h1 style={{
+            fontSize: 'clamp(2.5rem, 5.5vw, 3.8rem)',
+            fontWeight: 800, lineHeight: 1.1,
+            color: '#0B1D3A', letterSpacing: '-0.03em',
+            marginBottom: '24px',
+            fontFamily: "'Playfair Display', serif",
+          }}>
+            Manage your expenses
+            <br />
+            <span style={{ color: '#1A56DB' }}>smarter &amp; faster</span>
+          </h1>
+
+          <p style={{
+            fontSize: '1.1rem', lineHeight: 1.75, color: '#64748B',
+            maxWidth: '540px', margin: '0 auto 40px',
+          }}>
+            One portal for employees to submit travel and business expenses,
+            and for approvers to review, approve, and analyze — in real time.
+          </p>
+
+          <Link to="/signin" style={{
+            display: 'inline-flex', alignItems: 'center', gap: '8px',
+            padding: '16px 36px', borderRadius: '14px',
+            background: '#0B1D3A', color: '#FFFFFF',
+            fontSize: '16px', fontWeight: 600, textDecoration: 'none',
+            boxShadow: '0 10px 30px rgba(11,29,58,0.18)',
+          }}>
+            Get Started <ArrowRight size={18} />
+          </Link>
+
+          <p style={{
+            marginTop: '16px', fontSize: '13px', color: '#94A3B8',
+          }}>
+            No credit card required • Free for all employees
+          </p>
+
+          {/* Social proof row */}
+          <div style={{
+            marginTop: '48px',
+            display: 'flex', justifyContent: 'center', alignItems: 'center',
+            gap: '20px', flexWrap: 'wrap',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              {AVATAR_COLORS.map((c, i) => (
+                <div key={i} style={{
+                  width: '32px', height: '32px', borderRadius: '50%',
+                  background: c, border: '2px solid #FFFFFF',
+                  marginLeft: i === 0 ? 0 : '-8px',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+                }} />
+              ))}
+            </div>
+            <div style={{ display: 'flex', gap: '2px' }}>
+              {[0,1,2,3,4].map(i => (
+                <Star key={i} size={14} style={{ color: '#F59E0B', fill: '#F59E0B' }} />
+              ))}
+            </div>
+            <span style={{ fontSize: '13px', color: '#64748B', fontWeight: 500 }}>
+              Used by 50+ employees at Arus
+            </span>
           </div>
         </div>
       </section>
 
-      {/* ============== FEATURES ============== */}
-      <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-8">
-          <p className="text-center text-[#F59E0B] text-xs font-bold uppercase tracking-[0.18em] mb-2">
-            Why Arus
-          </p>
-          <h2 className="text-3xl font-bold text-center text-[#0B1D3A] leading-tight mb-4 font-[Playfair_Display]">
-            Everything finance teams actually need.
-          </h2>
-          <p className="text-center text-gray-500 leading-relaxed mb-12 max-w-xl mx-auto">
-            Built end-to-end on Supabase — secure, fast, and audit-ready from day one.
-          </p>
+      {/* ============== STATS BAR ============== */}
+      <div style={{ marginTop: 0, marginBottom: '80px', padding: '0 40px' }}>
+        <div style={{
+          maxWidth: '900px', margin: '0 auto',
+          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px',
+          background: '#E2E8F0',
+          borderRadius: '20px', overflow: 'hidden',
+          border: '1px solid #E2E8F0',
+        }}>
+          {STATS.map((s) => (
+            <div key={s.label} style={{
+              background: '#FAFBFC', padding: '28px 16px', textAlign: 'center',
+            }}>
+              <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0B1D3A', lineHeight: 1 }}>
+                {s.value}
+              </div>
+              <div style={{
+                fontSize: '0.75rem', color: '#94A3B8',
+                textTransform: 'uppercase', letterSpacing: '0.1em',
+                fontWeight: 600, marginTop: '8px',
+              }}>
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {FEATURES.map((f, i) => (
-              <div
-                key={f.title}
-                className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl p-8 hover:shadow-lg transition-all animate-fade-up"
-                style={{ animationDelay: `${i * 80}ms`, opacity: 0 }}
-              >
-                <div className={`w-12 h-12 rounded-full ${f.iconBg} flex items-center justify-center mb-4 shadow-md`}>
-                  <f.icon size={20} className="text-white" />
+      {/* ============== FEATURES ============== */}
+      <section style={{ padding: '80px 0', background: '#FAFBFC' }}>
+        <div style={SECTION_CONTAINER}>
+          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+            <p style={{
+              color: '#1A56DB', textTransform: 'uppercase',
+              fontSize: '12px', fontWeight: 700, letterSpacing: '0.15em',
+              marginBottom: '12px',
+            }}>
+              Features
+            </p>
+            <h2 style={{
+              color: '#0B1D3A', fontSize: '2.2rem', fontWeight: 800,
+              letterSpacing: '-0.02em', marginBottom: '16px',
+              fontFamily: "'Playfair Display', serif",
+            }}>
+              Everything finance teams need
+            </h2>
+            <p style={{
+              color: '#64748B', fontSize: '1rem', lineHeight: 1.6,
+              maxWidth: '460px', margin: '0 auto',
+            }}>
+              Built end-to-end on Supabase — secure, fast, and audit-ready from day one.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px',
+          }}>
+            {FEATURES.map((f) => (
+              <div key={f.title} style={{
+                background: '#FFFFFF', border: '1px solid #E2E8F0',
+                borderRadius: '20px', padding: '36px 32px',
+              }}>
+                <div style={{
+                  width: '52px', height: '52px', borderRadius: '14px',
+                  background: f.bg,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  marginBottom: '20px',
+                }}>
+                  <f.icon size={22} style={{ color: f.iconColor }} />
                 </div>
-                <h3 className="text-lg font-bold text-[#0B1D3A] leading-tight mb-2">{f.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
+                <h3 style={{
+                  fontSize: '1.1rem', fontWeight: 700,
+                  color: '#0B1D3A', marginBottom: '10px',
+                }}>
+                  {f.title}
+                </h3>
+                <p style={{ fontSize: '0.9rem', color: '#64748B', lineHeight: 1.7 }}>
+                  {f.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -170,78 +286,115 @@ export default function LandingPage() {
       </section>
 
       {/* ============== HOW IT WORKS ============== */}
-      <section className="bg-[#F8FAFC] py-20">
-        <div className="max-w-7xl mx-auto px-8">
-          <p className="text-center text-[#F59E0B] text-xs font-bold uppercase tracking-[0.18em] mb-2">
-            How it works
-          </p>
-          <h2 className="text-3xl font-bold text-center text-[#0B1D3A] leading-tight mb-4 font-[Playfair_Display]">
-            Three steps, start to finish.
-          </h2>
-          <p className="text-center text-gray-500 leading-relaxed mb-12 max-w-xl mx-auto">
-            From submission to approval to insight — the entire workflow in one place.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {STEPS.map((s, i) => (
-              <div
-                key={s.title}
-                className="bg-white rounded-2xl p-8 border border-[#E2E8F0] shadow-sm hover:shadow-md transition-all animate-fade-up"
-                style={{ animationDelay: `${i * 100}ms`, opacity: 0 }}
-              >
-                <div className="w-8 h-8 rounded-full bg-[#1A56DB] text-white flex items-center justify-center text-sm font-bold mb-4 shadow-sm">
-                  {i + 1}
-                </div>
-                <h3 className="text-lg font-bold text-[#0B1D3A] leading-tight mb-2">{s.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
+      <section style={{ padding: '100px 0', background: '#FFFFFF' }}>
+        <div style={SECTION_CONTAINER}>
+          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+            <p style={{
+              color: '#F59E0B', textTransform: 'uppercase',
+              fontSize: '12px', fontWeight: 700, letterSpacing: '0.15em',
+              marginBottom: '12px',
+            }}>
+              How it works
+            </p>
+            <h2 style={{
+              color: '#0B1D3A', fontSize: '2.2rem', fontWeight: 800,
+              letterSpacing: '-0.02em', marginBottom: '16px',
+              fontFamily: "'Playfair Display', serif",
+            }}>
+              Three steps, start to finish
+            </h2>
+            <p style={{
+              color: '#64748B', fontSize: '1rem', lineHeight: 1.6,
+              maxWidth: '460px', margin: '0 auto',
+            }}>
+              From submission to approval to insight — the entire workflow in one place.
+            </p>
           </div>
 
-          <div className="text-center mt-12">
-            <Link
-              to={ctaTarget}
-              className="inline-flex items-center gap-2 bg-[#1A56DB] hover:bg-[#1E40AF] text-white font-semibold px-6 py-3 rounded-xl shadow-lg shadow-blue-500/20 transition-all"
-            >
-              Get Started <ArrowRight size={16} />
-            </Link>
+          <div style={{
+            display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '28px',
+          }}>
+            {STEPS.map((s, i) => (
+              <div key={s.title} style={{
+                textAlign: 'center', padding: '40px 28px',
+                borderRadius: '20px', background: '#FAFBFC',
+                border: '1px solid #F1F5F9',
+              }}>
+                <div style={{
+                  width: '64px', height: '64px', borderRadius: '20px',
+                  background: s.bg,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  margin: '0 auto 20px',
+                }}>
+                  <s.icon size={26} style={{ color: s.iconColor }} />
+                </div>
+                <p style={{
+                  fontSize: '12px', color: '#94A3B8',
+                  textTransform: 'uppercase', letterSpacing: '0.12em',
+                  fontWeight: 700, marginBottom: '10px',
+                }}>
+                  Step {i + 1}
+                </p>
+                <h3 style={{
+                  fontSize: '1.1rem', fontWeight: 700,
+                  color: '#0B1D3A', marginBottom: '10px',
+                }}>
+                  {s.title}
+                </h3>
+                <p style={{ fontSize: '0.9rem', color: '#64748B', lineHeight: 1.7 }}>
+                  {s.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ============== CTA BANNER ============== */}
-      <section className="bg-[#0B1D3A] py-16 relative overflow-hidden">
-        <div className="absolute -top-10 -right-10 w-72 h-72 bg-[#F59E0B] opacity-10 blur-3xl rounded-full pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-8 relative z-10">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-            <div className="max-w-xl">
-              <p className="inline-flex items-center gap-2 text-[#F59E0B] text-xs uppercase tracking-[0.18em] font-bold mb-3">
-                <Building2 size={14} /> For Arus Employees
-              </p>
-              <h2 className="text-3xl font-bold text-white leading-tight mb-2 font-[Playfair_Display]">
-                Ready to submit your next expense?
-              </h2>
-              <p className="text-blue-300 leading-relaxed">
-                Sign in with your work credentials and get started in under a minute.
-              </p>
-            </div>
-
-            <Link
-              to={ctaTarget}
-              className="inline-flex items-center justify-center gap-2 bg-[#F59E0B] hover:bg-[#D97706] text-[#0B1D3A] font-bold rounded-xl px-8 py-4 shadow-lg shadow-amber-500/30 whitespace-nowrap transition-all"
-            >
-              <CheckCircle2 size={18} /> Get Started
-            </Link>
-          </div>
+      <div style={{ padding: '0 40px', marginBottom: '80px' }}>
+        <div style={{
+          maxWidth: '1000px', margin: '0 auto',
+          borderRadius: '24px', background: '#0B1D3A',
+          padding: '64px 48px', textAlign: 'center',
+        }}>
+          <p style={{
+            color: '#F59E0B', textTransform: 'uppercase',
+            fontSize: '12px', fontWeight: 700, letterSpacing: '0.15em',
+            marginBottom: '16px',
+          }}>
+            For Arus Employees
+          </p>
+          <h2 style={{
+            color: '#FFFFFF', fontSize: '2rem', fontWeight: 800,
+            letterSpacing: '-0.02em', marginBottom: '16px',
+            fontFamily: "'Playfair Display', serif",
+          }}>
+            Ready to submit your next expense?
+          </h2>
+          <p style={{
+            color: 'rgba(147,187,252,0.6)', fontSize: '1rem', lineHeight: 1.6,
+            marginBottom: '32px',
+            maxWidth: '460px', marginLeft: 'auto', marginRight: 'auto',
+          }}>
+            Sign in with your work credentials and get started in under a minute.
+          </p>
+          <Link to="/signin" style={{
+            display: 'inline-flex', alignItems: 'center', gap: '8px',
+            background: '#F59E0B', color: '#0B1D3A',
+            padding: '14px 32px', borderRadius: '12px',
+            fontSize: '15px', fontWeight: 700, textDecoration: 'none',
+          }}>
+            Get Started <ArrowRight size={16} />
+          </Link>
         </div>
-      </section>
+      </div>
 
       {/* ============== FOOTER ============== */}
-      <footer className="bg-[#0B1D3A] border-t border-white/10 py-6">
-        <div className="max-w-7xl mx-auto px-8 text-center text-blue-400 text-sm">
-          © {new Date().getFullYear()} Arus — Expense Management CRM ·
-          <span className="ml-1">Built on Supabase</span>
-        </div>
+      <footer style={{
+        borderTop: '1px solid #F1F5F9', padding: '32px',
+        textAlign: 'center', color: '#94A3B8', fontSize: '0.85rem',
+      }}>
+        © {new Date().getFullYear()} Arus — Expense Management CRM · Built on Supabase
       </footer>
     </div>
   )
